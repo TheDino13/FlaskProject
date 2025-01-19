@@ -1,7 +1,6 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+#urls.py = add new pages to our project,like check panel or english panel
+#main.py = probably where we do all the commands
+#manage.py = admin panel
 
 
 def print_hi(name):

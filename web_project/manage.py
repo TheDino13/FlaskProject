@@ -3,7 +3,7 @@
 import os
 import sys
 
-
+#if you see this file nice,run this command to see website version > python manage.py runserver
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
