@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Language</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Language</h1>
+        <button onclick="window.location.href='{{ url_for('levels', language='English') }}'">English</button>
+        <button onclick="window.location.href='{{ url_for('levels', language='Spanish') }}'">Spanish</button>
+        <!-- Add more languages as needed -->
+    </div>
+</body>
+</html>

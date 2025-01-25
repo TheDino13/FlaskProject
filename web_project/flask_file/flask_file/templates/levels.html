@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Level</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Level for {{ language }}</h1>
+        <button onclick="window.location.href='{{ url_for('resources', language=language, level='A1') }}'">A1</button>
+        <button onclick="window.location.href='{{ url_for('resources', language=language, level='A2') }}'">A2</button>
+        <button onclick="window.location.href='{{ url_for('resources', language=language, level='B1') }}'">B1</button>
+        <button onclick="window.location.href='{{ url_for('resources', language=language, level='B2') }}'">B2</button>
+        <button onclick="window.location.href='{{ url_for('resources', language=language, level='C1') }}'">C1</button>
+        <button onclick="window.location.href='{{ url_for('resources', language=language, level='C2') }}'">C2</button>
+    </div>
+</body>
+</html>
