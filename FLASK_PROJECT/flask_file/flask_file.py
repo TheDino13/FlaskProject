@@ -43,7 +43,7 @@ def login():
            logging.debug("User authenticated")
            login_user(user)
            flash('Logged in successfully!', 'success')
-           return redirect(url_for('dashboard'))
+           return redirect(url_for('languages'))
        else:
            logging.debug("Authentication failed")
            flash('Login failed. Check username and password.', 'danger')
