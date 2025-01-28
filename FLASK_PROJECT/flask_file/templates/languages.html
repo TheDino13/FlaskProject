@@ -9,11 +9,9 @@
 <body>
     <div class="container">
         <h1>Select Language</h1>
-        <button onclick="window.location.href='{{ url_for('levels', language='English') }}'">English</button>
-        <button onclick="window.location.href='{{ url_for('levels', language='Spanish') }}'">Spanish</button>
-        <button onclick="window.location.href='{{ url_for('levels', language='French') }}'">French</button>
-        <button onclick="window.location.href='{{ url_for('levels', language='German') }}'">German</button>
-        <!-- Add more languages as needed -->
+        {% for language in languages %}
+        <button onclick="window.location.href='{{ url_for('levels', language=language) }}'">{{ language.capitalize() }}</button>
+        {% endfor %}
     </div>
 </body>
 </html>
