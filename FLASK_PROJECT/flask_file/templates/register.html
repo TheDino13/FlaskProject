@@ -25,6 +25,61 @@
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
+
+            <h3>Select Languages and Levels:</h3>
+            <div>
+                <input type="checkbox" id="english" name="languages" value="english">
+                <label for="english">English</label>
+                <select name="english_level">
+                    <option value="">Select Level</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select>
+            </div>
+            <div>
+                <input type="checkbox" id="spanish" name="languages" value="spanish">
+                <label for="spanish">Spanish</label>
+                <select name="spanish_level">
+                    <option value="">Select Level</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select>
+            </div>
+            <div>
+                <input type="checkbox" id="french" name="languages" value="french">
+                <label for="french">French</label>
+                <select name="french_level">
+                    <option value="">Select Level</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select>
+            </div>
+            <div>
+                <input type="checkbox" id="german" name="languages" value="german">
+                <label for="german">German</label>
+                <select name="german_level">
+                    <option value="">Select Level</option>
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1">B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                </select>
+            </div>
+
             <button type="submit">Register</button>
         </form>
         <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a>.</p>
