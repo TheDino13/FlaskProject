@@ -9,12 +9,9 @@
 <body>
     <div class="container">
         <h1>Select Level for {{ language }}</h1>
-        <button onclick="window.location.href='{{ url_for('resources', language=language, level='A1') }}'">A1</button>
-        <button onclick="window.location.href='{{ url_for('resources', language=language, level='A2') }}'">A2</button>
-        <button onclick="window.location.href='{{ url_for('resources', language=language, level='B1') }}'">B1</button>
-        <button onclick="window.location.href='{{ url_for('resources', language=language, level='B2') }}'">B2</button>
-        <button onclick="window.location.href='{{ url_for('resources', language=language, level='C1') }}'">C1</button>
-        <button onclick="window.location.href='{{ url_for('resources', language=language, level='C2') }}'">C2</button>
+        {% for level in available_levels %}
+        <button onclick="window.location.href='{{ url_for('resources', language=language, level=level) }}'">{{ level }}</button>
+        {% endfor %}
     </div>
 </body>
 </html>
