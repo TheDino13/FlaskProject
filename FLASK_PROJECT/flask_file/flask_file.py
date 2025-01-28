@@ -15,11 +15,14 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
+
 # User Model
 class User(db.Model, UserMixin):
    id = db.Column(db.Integer, primary_key=True)
    username = db.Column(db.String(80), unique=True, nullable=False)
    password = db.Column(db.String(120), nullable=False)
+   languages = db.Column(db.String(200), nullable=True)
+   levels = db.Column(db.String(200), nullable=True)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -55,30 +58,47 @@ def register():
     if request.method == 'POST':
         username = request.form.get('username')
         password = request.form.get('password')
-        print(f"Received registration: {username}")  
+        languages = request.form.getlist('languages')
+        levels = {}
+
+        if 'english' in languages:
+            levels['english'] = request.form.get('english_level')
+        if 'spanish' in languages:
+            levels['spanish'] = request.form.get('spanish_level')
+        if 'french' in languages:
+            levels['french'] = request.form.get('french_level')
+        if 'german' in languages:
+            levels['german'] = request.form.get('german_level')
+
         existing_user = db.session.execute(
             db.select(User).filter_by(username=username)
         ).scalar_one_or_none()
+
         if len(password) < 8:
             flash('Password too short. It must be at least 8 characters long.', 'danger')
             return render_template('register.html')
+
         if existing_user:
-            print(f"User {username} already exists") 
             flash('Username already exists', 'danger')
             return render_template('register.html')
+
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-        new_user = User(username=username, password=hashed_password)
+        new_user = User(
+            username=username,
+            password=hashed_password,
+            languages=",".join(languages),
+            levels=str(levels)
+        )
+
         try:
             db.session.add(new_user)
             db.session.commit()
-            print(f"User {username} successfully registered")
-            
             flash('Registration successful', 'success')
             return redirect(url_for('login'))
         except Exception as e:
             db.session.rollback()
-            print(f"Registration error: {e}")
             flash(f'Registration error: {str(e)}', 'danger')
+
     return render_template('register.html')
 
 @app.route('/logout')
@@ -88,18 +108,28 @@ def logout():
    flash('You have been logged out.', 'info')
    return redirect(url_for('login'))
 
-@app.route('/languages', methods=['POST'])
+@app.route('/languages')
 @login_required
 def languages():
-    username = request.form['username']
-    password = request.form['password']
-    # Add authentication logic here
-    return render_template('languages.html')
+    user = current_user
+    languages = user.languages.split(',') if user.languages else []
+    return render_template('languages.html', languages=languages)
 
 @app.route('/levels/<language>')
 @login_required
 def levels(language):
-    return render_template('levels.html', language=language)
+    user = current_user
+    levels_dict = eval(user.levels)
+    selected_level = levels_dict.get(language.lower(), "")
+    level_order = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+
+    if selected_level:
+        start_index = level_order.index(selected_level)
+        available_levels = level_order[start_index:]
+    else:
+        available_levels = []
+
+    return render_template('levels.html', language=language, available_levels=available_levels)
 
 @app.route('/resources/<language>/<level>')
 @login_required
