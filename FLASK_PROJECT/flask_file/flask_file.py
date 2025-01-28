@@ -94,6 +94,24 @@ def logout():
 def dashboard():
    return render_template('dashboard.html', username=current_user.username)
 
+@app.route('/languages', methods=['POST'])
+@login_required
+def languages():
+    username = request.form['username']
+    password = request.form['password']
+    # Add authentication logic here
+    return render_template('languages.html')
+
+@app.route('/levels/<language>')
+@login_required
+def levels(language):
+    return render_template('levels.html', language=language)
+
+@app.route('/resources/<language>/<level>')
+@login_required
+def resources(language, level):
+    return render_template('resources.html', language=language, level=level)
+
 # Utility route to view all users (for testing purposes)
 @app.route('/users')
 def get_users():
