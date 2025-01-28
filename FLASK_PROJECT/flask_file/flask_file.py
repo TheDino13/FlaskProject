@@ -88,11 +88,6 @@ def logout():
    flash('You have been logged out.', 'info')
    return redirect(url_for('login'))
 
-@app.route('/dashboard')
-@login_required
-def dashboard():
-   return render_template('dashboard.html', username=current_user.username)
-
 @app.route('/languages', methods=['POST'])
 @login_required
 def languages():
