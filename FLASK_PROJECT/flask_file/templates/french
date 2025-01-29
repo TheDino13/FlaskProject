@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>French Levels</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>French Learning Levels</h1>
+        <p>Select the level you want to learn:</p>
+
+        <ul>
+            <li><a href="{{ url_for('french_a1') }}">A1 - Beginner</a></li>
+            <li><a href="{{ url_for('french_a2') }}">A2 - Elementary</a></li>
+            <li><a href="{{ url_for('french_b1') }}">B1 - Intermediate</a></li>
+            <li><a href="{{ url_for('frenchh_b2') }}">B2 - Upper Intermediate</a></li>
+            <li><a href="{{ url_for('french_c1') }}">C1 - Advanced</a></li>
+            <li><a href="{{ url_for('french_c2') }}">C2 - Proficient</a></li>
+        </ul>
+
+        <a href="{{ url_for('languages') }}">Back to Languages</a>
+    </div>
+</body>
+</html>
