@@ -20,7 +20,7 @@
         {% endif %}
         {% endwith %}
 
-        <form action="{{ url_for('register') }}" method="post">
+        <form id="registerForm" action="{{ url_for('register') }}" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
