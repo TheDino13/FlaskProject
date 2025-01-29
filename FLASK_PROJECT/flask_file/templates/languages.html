@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <h1>Welcome, {{ username }}!</h1>
         <h1>Select Language</h1>
         {% for language in languages %}
         <button onclick="window.location.href='{{ url_for('levels', language=language) }}'">{{ language.capitalize() }}</button>
