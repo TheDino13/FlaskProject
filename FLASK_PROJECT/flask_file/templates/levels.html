@@ -12,6 +12,7 @@
         {% for level in available_levels %}
         <button onclick="window.location.href='{{ url_for('resources', language=language, level=level) }}'">{{ level }}</button>
         {% endfor %}
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
     </div>
 </body>
 </html>
