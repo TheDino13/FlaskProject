@@ -13,6 +13,7 @@
         {% for language in languages %}
         <button onclick="window.location.href='{{ url_for('levels', language=language) }}'">{{ language.capitalize() }}</button>
         {% endfor %}
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
     </div>
 </body>
 </html>
